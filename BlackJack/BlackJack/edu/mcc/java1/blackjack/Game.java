@@ -17,11 +17,11 @@ public class Game
 		String userName = keyboard.nextLine();
 		cards = new Deck();
 		deck = new ArrayList<Cards>();
+		deck = cards.shuffle();
 		computerHand = new ArrayList<>();
 		player1Hand = new ArrayList<>();
 		computer = new Player("Computer");
 		player1 = new Player(userName);
-		keyboard.close();
 		deal();
 		play();
 	}
@@ -84,19 +84,8 @@ public class Game
 			
 			computersMove();
 			calcScore();
-			if (player1Score >  computerScore)
-			{
-				System.out.println(player1.getName() + " wins!");
-				done = true;
-			}
 			
-			else if (computerScore > player1Score)
-			{
-				System.out.println("Computer wins!");
-				done = true;
-			}
-			
-			else if (computerScore == 21 && player1Score == 21)
+			if (computerScore == 21 && player1Score == 21)
 			{
 				System.out.println("Tie!");
 				done = true;
@@ -116,8 +105,20 @@ public class Game
 				done = true;
 			}
 			
-			input.close();
 		}
+		
+		if (player1Score >  computerScore)
+		{
+			System.out.println(player1.getName() + " wins!");
+			done = true;
+		}
+		
+		else if (computerScore > player1Score)
+		{
+			System.out.println("Computer wins!");
+			done = true;
+		}
+		
 	}
 	
 	public void calcScore()
