@@ -107,16 +107,22 @@ public class Game
 			
 		}
 		
-		if (player1Score >  computerScore)
+		System.out.println(player1.getName() + "'s score: " + player1Score + "\n");
+		System.out.println("Computer's score: " + computerScore + "\n");
+		
+		if (player1Score >  computerScore && player1Score <= 21)
 		{
 			System.out.println(player1.getName() + " wins!");
-			done = true;
 		}
 		
-		else if (computerScore > player1Score)
+		else if (computerScore > player1Score && computerScore <= 21)
 		{
 			System.out.println("Computer wins!");
-			done = true;
+		}
+		
+		else if (computerScore == player1Score && computerScore <= 21 && player1Score <= 21)
+		{
+			System.out.println("Tie!");
 		}
 		
 	}
